@@ -1,0 +1,61 @@
+<div class="investment-summary">
+  <h2>Investment Summary</h2>
+  <div class="summary-cards">
+    <div class="summary-card">
+      <h3>Total Investment</h3>
+      <p class="amount">{{ totalInvestment() | currency : "USD" }}</p>
+    </div>
+    <div class="summary-card">
+      <h3>Total Interest Earned</h3>
+      <p class="amount">{{ totalInterest() | currency : "USD" }}</p>
+    </div>
+    <div class="summary-card">
+      <h3>Final Value</h3>
+      <p class="amount final-value">{{ finalValue() | currency : "USD" }}</p>
+    </div>
+    <div class="summary-card">
+      <h3>Total Return</h3>
+      <p class="amount return">{{ totalReturn() | number : "1.2-2" }}%</p>
+    </div>
+  </div>
+</div>
+
+<!-- Investment Growth Chart -->
+<app-investment-chart
+  [investmentResults]="investmentResults()"
+></app-investment-chart>
+
+<div class="table-container">
+  <h3>Year-by-Year Breakdown</h3>
+  <table class="table table-striped table-dark table-hover">
+    <thead class="table-header">
+      <tr>
+        <th>Year</th>
+        <th>Investment Value</th>
+        <th>Interest</th>
+        <th>Total Interest</th>
+        <th>Investment Capital</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      @for (investmentResult of investmentResults(); track
+      investmentResult.year) {
+      <tr>
+        <td>{{ investmentResult.year }}</td>
+        <td>
+          {{ investmentResult.InvestmentValue | currency : "USD" }}
+        </td>
+        <td>
+          {{ investmentResult.Interest | currency : "USD" }}
+        </td>
+        <td>
+          {{ investmentResult.TotalInterest | currency : "USD" }}
+        </td>
+        <td>
+          {{ investmentResult.InvestmentCapital | currency : "USD" }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

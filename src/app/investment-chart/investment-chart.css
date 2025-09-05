@@ -1,0 +1,201 @@
+.charts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.chart-container {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.pie-chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.chart-header h3 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chart-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.export-btn {
+  background: linear-gradient(135deg, #59C197, #5962c1);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(89, 193, 151, 0.3);
+}
+
+.export-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(89, 193, 151, 0.4);
+  background: linear-gradient(135deg, #4a9d7a, #4a5bb8);
+}
+
+.export-btn:active {
+  transform: translateY(0);
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#investmentChart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.pie-chart-wrapper {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pieChart {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.legend-color.investment-value {
+  background: linear-gradient(135deg, #59C197, #4a9d7a);
+}
+
+.legend-color.total-interest {
+  background: linear-gradient(135deg, #5962c1, #4a5bb8);
+}
+
+.legend-color.investment-capital {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .chart-container {
+    padding: 1.5rem;
+  }
+  
+  .chart-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .chart-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .chart-wrapper {
+    height: 300px;
+    padding: 0.5rem;
+  }
+  
+  .pie-chart-wrapper {
+    height: 250px;
+  }
+  
+  #pieChart {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .chart-legend {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .legend-item {
+    font-size: 0.9rem;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    padding: 1rem;
+  }
+  
+  .chart-wrapper {
+    height: 250px;
+  }
+  
+  .export-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,54 @@
+<div class="charts-container">
+  <!-- Line Chart -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Investment Growth Over Time</h3>
+      <div class="chart-controls">
+        <button
+          type="button"
+          class="export-btn"
+          (click)="exportChart()"
+          title="Export chart as image"
+        >
+          📊 Export Chart
+        </button>
+      </div>
+    </div>
+
+    <div class="chart-wrapper">
+      <canvas
+        id="investmentChart"
+        aria-label="Investment growth chart showing investment value, total interest, and investment capital over time"
+      ></canvas>
+    </div>
+
+    <div class="chart-legend">
+      <div class="legend-item">
+        <div class="legend-color investment-value"></div>
+        <span>Investment Value - Total portfolio value including interest</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color total-interest"></div>
+        <span>Total Interest - Cumulative interest earned</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color investment-capital"></div>
+        <span>Investment Capital - Total amount invested</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie Chart -->
+  <div class="chart-container pie-chart-container">
+    <div class="chart-header">
+      <h3>Final Portfolio Distribution</h3>
+    </div>
+
+    <div class="pie-chart-wrapper">
+      <canvas
+        id="pieChart"
+        aria-label="Pie chart showing final portfolio distribution between investment capital and total interest"
+      ></canvas>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+<form
+  [formGroup]="userInputForm"
+  class="row"
+  (ngSubmit)="calculate()"
+  [class.disabled]="disabled()"
+>
+  <div class="user-input col-6">
+    <div class="user-input-item">
+      <label for="initial-investment">Initial Investment ($)</label>
+      <input
+        type="number"
+        id="initial-investment"
+        formControlName="initialInvestment"
+        [class.error]="initialInvestment?.invalid && initialInvestment?.touched"
+        [class.valid]="initialInvestment?.valid && initialInvestment?.touched"
+        [disabled]="disabled()"
+        placeholder="Enter initial investment amount"
+        min="0.01"
+        max="10000000"
+        step="0.01"
+        aria-describedby="initial-investment-error"
+      />
+      @if (getInitialInvestmentError()) {
+      <div id="initial-investment-error" class="error-message" role="alert">
+        {{ getInitialInvestmentError() }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="user-input col-6">
+    <div class="user-input-item">
+      <label for="annual-contribution">Annual Contribution ($)</label>
+      <input
+        type="number"
+        id="annual-contribution"
+        formControlName="annualContribution"
+        [class.error]="
+          annualContribution?.invalid && annualContribution?.touched
+        "
+        [class.valid]="annualContribution?.valid && annualContribution?.touched"
+        [disabled]="disabled()"
+        placeholder="Enter annual contribution amount"
+        min="0.01"
+        max="1000000"
+        step="0.01"
+        aria-describedby="annual-contribution-error"
+      />
+      @if (getAnnualContributionError()) {
+      <div id="annual-contribution-error" class="error-message" role="alert">
+        {{ getAnnualContributionError() }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="user-input col-6">
+    <div class="user-input-item">
+      <label for="expected-return">Expected Return (%)</label>
+      <input
+        type="number"
+        id="expected-return"
+        formControlName="expectedReturn"
+        [class.error]="expectedReturn?.invalid && expectedReturn?.touched"
+        [class.valid]="expectedReturn?.valid && expectedReturn?.touched"
+        [disabled]="disabled()"
+        placeholder="Enter expected annual return"
+        min="0.01"
+        max="50"
+        step="0.01"
+        aria-describedby="expected-return-error"
+      />
+      @if (getExpectedReturnError()) {
+      <div id="expected-return-error" class="error-message" role="alert">
+        {{ getExpectedReturnError() }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="user-input col-6">
+    <div class="user-input-item">
+      <label for="investment-period">Investment Period (Years)</label>
+      <input
+        type="number"
+        id="investment-period"
+        formControlName="investmentPeriod"
+        [class.error]="investmentPeriod?.invalid && investmentPeriod?.touched"
+        [class.valid]="investmentPeriod?.valid && investmentPeriod?.touched"
+        [disabled]="disabled()"
+        placeholder="Enter investment period in years"
+        min="1"
+        max="100"
+        aria-describedby="investment-period-error"
+      />
+      @if (getInvestmentPeriodError()) {
+      <div id="investment-period-error" class="error-message" role="alert">
+        {{ getInvestmentPeriodError() }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="user-input col-12">
+    <div class="button-group">
+      <button
+        type="submit"
+        [disabled]="!isFormValid() || disabled()"
+        [class.disabled]="!isFormValid() || disabled()"
+        class="calculate-btn"
+      >
+        @if (disabled()) { Calculating... } @else { Calculate Investment }
+      </button>
+      <button
+        type="button"
+        (click)="resetForm()"
+        [disabled]="disabled()"
+        class="reset-btn"
+      >
+        Reset Form
+      </button>
+    </div>
+
+    @if (hasFormErrors()) {
+    <div class="form-error-summary" role="alert">
+      <strong>Please fix the following errors:</strong>
+      <ul>
+        @if (getInitialInvestmentError()) {
+        <li>{{ getInitialInvestmentError() }}</li>
+        } @if (getAnnualContributionError()) {
+        <li>{{ getAnnualContributionError() }}</li>
+        } @if (getExpectedReturnError()) {
+        <li>{{ getExpectedReturnError() }}</li>
+        } @if (getInvestmentPeriodError()) {
+        <li>{{ getInvestmentPeriodError() }}</li>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+</form>

@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+  /* Dark base color */
+  background-color: #0e1a14b0;
+
+  /* Radial glow effect */
+  background: radial-gradient(
+      circle  at center,
+      rgba(0, 0, 0, 0.4) 0%,   /* soft green glow */
+      rgb(31, 30, 30)50%      /* dark background */
+  );
+  background-size: cover;
+    color: #f1f1f1;
+    font-family: 'Inter';
+     
+}
+
+ 
+
